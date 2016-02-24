@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- ng-app links to Angular module in JS file -->
+<html lang="en" ng-app='myApp'>
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication Table</title>
+    <!-- CDN link to Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<!-- ng-controller links to Angular controller in JS file where our scrope w/ numbers array is held. Initial number limit is also set here. -->
+    <div ng-controller="MultiplicationCtrl" initial-number-limit="10">
+    	<!-- ng-model captures user input in numberLimit variable. This makes the multiplication table responsive to the user input b/c it dynamically changes the for loop in the numbers function contained in the scope. -->
+    	<input type="number" ng-model = "numberLimit" placeholder="Enter a number">
+    	<table>
+		<!-- ng-repeat is used to iterate through numbers array using the numbers function defined in the scope -->
+        <tr ng-repeat="numberA in numbers()">
+    	<!-- ng-repeat used again to iterate through number array using the numbers funciton defined in the scope -->
+            <td ng-repeat="numberB in numbers()">
+                {{ compute(numberA, numberB) }}
+            </td>
+        </tr>
+    	</table>
+    </div>
+    <!-- script tag links to JS file containing module -->
+    <script src="js/myApp.js" type="text/javascript"></script>
+</body>
+</html>
